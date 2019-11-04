@@ -8,19 +8,17 @@ class Bottles
   end
 
   def verse(number)
-    case number
-    when 0
-      "#{quantity(number).capitalize} #{container(number)} of beer on the wall, #{quantity(number)} #{container(number)} of beer.\n#{action(number)}, #{quantity(99)} #{container(number)} of beer on the wall.\n"
-    else
-      "#{quantity(number)} #{container(number)} of beer on the wall, #{quantity(number)} #{container(number)} of beer.\n#{action(number)}, #{quantity(number-1)} #{container(number-1)} of beer on the wall.\n"
-    end
+    "#{quantity(number).capitalize} #{container(number)} of beer on the wall, " +
+    "#{quantity(number)} #{container(number)} of beer.\n" +
+    "#{action(number)}, " +
+    "#{quantity(successor(number))} #{container(successor(number))} of beer on the wall.\n"
   end
 
   def quantity(number)
     if number == 0
       "no more"
     else
-      number
+      number.to_s
     end
   end
 
@@ -48,4 +46,11 @@ class Bottles
     end
   end
 
+  def successor(number)
+    if number == 0
+      99
+    else
+      number - 1
+    end
+  end
 end
