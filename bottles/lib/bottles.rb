@@ -11,10 +11,10 @@ class Bottles
     bottle_number = bottle_number_for(number)
     next_bottle_number = bottle_number_for(bottle_number.successor)
 
-    "#{bottle_number.quantity.capitalize} #{bottle_number.container} of beer on the wall, " +
-    "#{bottle_number.quantity} #{bottle_number.container} of beer.\n" +
+    "#{bottle_number.description} of beer on the wall, ".capitalize +
+    "#{bottle_number.description} of beer.\n" +
     "#{bottle_number.action}, " +
-    "#{next_bottle_number.quantity} #{next_bottle_number.container} of beer on the wall.\n"
+    "#{next_bottle_number.description} of beer on the wall.\n"
   end
 
   def bottle_number_for(number)
@@ -34,6 +34,10 @@ class BottleNumber
   attr_reader :number
   def initialize(number)
     @number = number
+  end
+
+  def description
+    "#{quantity} #{container}"
   end
 
   def quantity
